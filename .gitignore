@@ -1,4 +1,8 @@
-venv
+venv/
 __pycache__/
-db.sqlite3
+*.sqlite3
 .DS_Store
+.env
+cov_html/
+.coverage
+logs.log
