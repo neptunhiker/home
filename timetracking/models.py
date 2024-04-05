@@ -9,22 +9,22 @@ class Booking(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
-        verbose_name="Nutzer"
+        verbose_name="User"
     )
-    date = models.DateField(verbose_name="Datum")
-    start_time = models.DateTimeField(verbose_name="Startzeit")
-    end_time = models.DateTimeField(verbose_name="Endzeit")
+    date = models.DateField(verbose_name="Date")
+    start_time = models.TimeField(verbose_name="Starting time")
+    end_time = models.TimeField(verbose_name="Ending time")
     CATEGORIES = (
-        ('Arbeit', 'Arbeit'),
-        ('Pause', 'Pause'),
-        ('Jobsuche', 'Jobsuche')
-        ('Freizeit', 'Freizeit'),
-        ('Urlaub', 'Urlaub'),
-        ('Krankheit', 'Krankheit'),
-        ('Sonstiges', 'Sonstiges'),
+        ('Work', 'Work'),
+        ('Break', 'Break'),
+        ('Job search', 'Job search'),
+        ('Leisure', 'Leisure'),
+        ('Vacation', 'Vacation'),
+        ('Illness', 'Illness'),
+        ('Other', 'Other'),
     )
-    category = models.CharField(max_length=20, choices=CATEGORIES, default='Arbeit')
+    category = models.CharField(max_length=20, choices=CATEGORIES, default='Work')
     comment = models.TextField()
     
     def __str__(self):
-        return f'{self.user} - {self.start_time} bis {self.end_time} am {self.date}'
+        return f'{self.user} - {self.start_time} until {self.end_time} on {self.date}'
