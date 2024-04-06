@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<section>
+  <div class="container">
+    <h1>Bookings for {{ user }}</h1>
+    <table class="table mt-5">
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Start time</th>
+          <th scope="col">End time</th>
+          <th scope="col">Duration</th>
+          <th scope="col">Category</th>
+          <th scope="col">Comment</th>
+          <th scope=""col>Edit/Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for booking in booking_list %}
+        <tr>
+          <td>{{ booking.date }}</td>
+          <td>{{ booking.start_time|date:"g:i A" }}</td>
+          <td>{{ booking.end_time|date:"g:i A" }}</td>
+          <td>{{ booking.duration }} min</td>
+          <td>{{ booking.category }}</td>
+          <td>{{ booking.comment }}</td>
+          <td><a class="text-warning" href="{% url 'booking_edit' booking.pk %}"><i class="bi-pen-fill"></i></a><a class="text-danger ms-2" href="{% url 'booking_delete' booking.pk %}"><i class="bi-x-circle-fill"></i></a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock content %}
