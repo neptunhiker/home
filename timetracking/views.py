@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import reverse
 from django.views.generic import TemplateView, CreateView, ListView, UpdateView, DeleteView
 from .models import Booking
@@ -8,7 +9,7 @@ class HomePageView(TemplateView):
 class ReportsView(TemplateView):
     template_name = 'reports.html'
     
-class BookingCreateView(CreateView):
+class BookingCreateView(LoginRequiredMixin, CreateView):
     model = Booking
     fields = ['date', 'start_time', 'end_time', 'category', 'comment']
     template_name = 'booking_new.html'
@@ -18,7 +19,7 @@ class BookingCreateView(CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
       
-class BookingListView(ListView):
+class BookingListView(LoginRequiredMixin, ListView):
     model = Booking
     template_name = 'booking_list.html'
     
@@ -29,7 +30,7 @@ class BookingListView(ListView):
         context["user"] = self.request.user
         return context
         
-class BookingUpdateView(UpdateView):
+class BookingUpdateView(LoginRequiredMixin, UpdateView):
     model = Booking
     fields = ['date', 'start_time', 'end_time', 'category', 'comment']
     template_name = 'booking_edit.html'
@@ -39,7 +40,7 @@ class BookingUpdateView(UpdateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
     
-class BookingDeleteView(DeleteView):
+class BookingDeleteView(LoginRequiredMixin, DeleteView):
     model = Booking
     template_name = 'booking_delete.html'
     success_url = '/timetracking/booking/list'
