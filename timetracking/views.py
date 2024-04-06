@@ -18,6 +18,9 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+    
+    def get_success_url(self) -> str:
+        return reverse("booking_list")
       
 class BookingListView(LoginRequiredMixin, ListView):
     model = Booking
