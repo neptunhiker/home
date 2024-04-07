@@ -9,13 +9,14 @@
       <div class="display-1 text-success">
         <i class="bi-clock-history"></i>
       </div>
-      <div class="h3 fw-bold mt-5">Make a new time booking</div>
+      <div class="h3 fw-bold mt-5">Create a new time booking for<br>{{ user }}</div>
     </div>
     <div class="col">
 
       <form action="" method="post">{% csrf_token %}
         {{ form|crispy }}
-        <button class="btn btn-success ml-2" type="submit">Speichern</button>
+        <button class="btn btn-success ml-2" type="submit">Save</button>
+        <a class="btn btn-outline-danger" href="{% url 'booking_list' %}">Cancel</a>
       </form>
     </div>
   </div>
