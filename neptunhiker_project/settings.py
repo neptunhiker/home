@@ -161,4 +161,4 @@ AUTH_USER_MODEL = "accounts.CustomUser"
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
-CSRF_TRUSTED_ORIGINS = ["https://neptunhiker.fly.dev"]
+CSRF_TRUSTED_ORIGINS = ["https://sb-schmitz.fly.dev"]
