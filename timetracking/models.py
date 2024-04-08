@@ -26,7 +26,7 @@ class Booking(models.Model):
         ('Other', 'Other'),
     )
     category = models.CharField(max_length=20, choices=CATEGORIES, default='Work')
-    comment = models.TextField(blank=True, null=True, verbose_name="Comment")
+    comment = models.CharField(max_length=50, blank=True, null=True, verbose_name="Comment")
     
     @property
     def duration(self):
