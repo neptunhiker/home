@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>{% block title %}BeginnerLuft App{% endblock title %}</title>
+    <title>{% block title %}SBS Apps{% endblock title %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
@@ -14,6 +14,7 @@
 
 <header>
     <nav class="text-end p-5">
+      <a class="me-3" href="{% url 'home' %}">Home</a>
       <a href="{% url 'admin:index' %}">Admin</a>
     </nav>
 </header>

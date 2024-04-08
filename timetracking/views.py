@@ -5,15 +5,13 @@ from .models import Booking
 from . import utils
 
 class HomePageView(TemplateView):
-    template_name = 'home.html'
+    template_name = 'timetracking/home.html'
     
-class ReportsView(TemplateView):
-    template_name = 'reports.html'
     
 class BookingCreateView(LoginRequiredMixin, CreateView):
     model = Booking
     fields = ['date', 'start_time', 'end_time', 'category', 'comment']
-    template_name = 'booking_new.html'
+    template_name = 'timetracking/booking_new.html'
     success_url = '/timetracking/home'
     
     def form_valid(self, form):
@@ -25,7 +23,7 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
       
 class BookingListView(LoginRequiredMixin, ListView):
     model = Booking
-    template_name = 'booking_list.html'
+    template_name = 'timetracking/booking_list.html'
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -66,7 +64,7 @@ class BookingListView(LoginRequiredMixin, ListView):
 class BookingUpdateView(LoginRequiredMixin, UpdateView):
     model = Booking
     fields = ['date', 'start_time', 'end_time', 'category', 'comment']
-    template_name = 'booking_edit.html'
+    template_name = 'timetracking/booking_edit.html'
     success_url = '/timetracking/booking/list'
     
     def form_valid(self, form):
@@ -75,7 +73,7 @@ class BookingUpdateView(LoginRequiredMixin, UpdateView):
     
 class BookingDeleteView(LoginRequiredMixin, DeleteView):
     model = Booking
-    template_name = 'booking_delete.html'
+    template_name = 'timetracking/booking_delete.html'
     success_url = '/timetracking/booking/list'
     
     def get_success_url(self) -> str:

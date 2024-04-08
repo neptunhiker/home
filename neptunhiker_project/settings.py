@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Local
     "accounts.apps.AccountsConfig",
+    "apps",
     "timetracking",
     # 3rd party
     'allauth',
