@@ -2,6 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import reverse
 from django.views.generic import TemplateView, CreateView, ListView, UpdateView, DeleteView
 from .models import Booking
+from . import utils
 
 class HomePageView(TemplateView):
     template_name = 'home.html'
@@ -29,7 +30,16 @@ class BookingListView(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         
+        
         context["booking_list"] = Booking.objects.filter(user=self.request.user)
+        date_ranges = utils.get_date_ranges_of_last_n_months(3)
+        time_series = {}
+        for date_range in date_ranges:
+            start_date, end_date = date_range
+            bookings = utils.get_bookings_in_date_range(start_date, end_date, self.request.user)
+            time_series[start_date.strftime("%b '%y")] = utils.get_duration_per_category(bookings)
+
+        context["time_series"] = time_series
         context["user"] = self.request.user
         return context
         

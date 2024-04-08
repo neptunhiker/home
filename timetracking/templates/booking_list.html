@@ -4,9 +4,30 @@
 {% block content %}
 
 <section>
-  <div class="container bg-light p-4 rounded shadow-sm">
-    <div class="text-end text-success my-3"><a href="{% url 'booking_new' %}"><i class="bi-plus-circle h3"></i></a></div>
+  <div class="container">
+
     <h1 class="mb-3">Bookings for {{ user }}</h1>
+  </div>
+</section>
+
+<section class="my-5">
+  <div class="container">
+    <div class="row">
+      {% for key, value in time_series.items %}
+      <div class="col-4">
+        <div class="h1">{{ key }}</div>
+          {% for category, duration in value.items %}
+          <div><span class="fw-bold">{{ category }}:</span> {{ duration }} minutes</div>
+          {% endfor %}
+      </div>
+        {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container bg-light p-4 rounded shadow-sm">
+    <div class="text-end text-success mb-3"><a href="{% url 'booking_new' %}"><i class="bi-plus-circle h3"></i></a></div>
     <div class="table-responsive">
       <table class="table">
         <thead>
@@ -37,4 +58,6 @@
     </div>
   </div>
 </section>
+
+
 {% endblock content %}
