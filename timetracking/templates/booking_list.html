@@ -6,6 +6,7 @@
 <section>
   <div class="container">
     <h1>Bookings for {{ user }}</h1>
+    <div class="text-end text-success"><a href="{% url 'booking_new' %}"><i class="bi-plus-circle h3"></i></a></div>
     <table class="table mt-5">
       <thead>
         <tr>
@@ -27,7 +28,7 @@
           <td>{{ booking.duration }} min</td>
           <td>{{ booking.category }}</td>
           <td>{{ booking.comment }}</td>
-          <td><a class="text-warning" href="{% url 'booking_edit' booking.pk %}"><i class="bi-pen-fill"></i></a><a class="text-danger ms-2" href="{% url 'booking_delete' booking.pk %}"><i class="bi-x-circle-fill"></i></a></td>
+          <td><a class="text-warning" href="{% url 'booking_edit' booking.pk %}"><i class="bi-pen"></i></a><a class="text-danger ms-2" href="{% url 'booking_delete' booking.pk %}"><i class="bi-x-circle"></i></a></td>
         </tr>
         {% endfor %}
       </tbody>
