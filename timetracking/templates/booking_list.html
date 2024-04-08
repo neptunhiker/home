@@ -10,14 +10,20 @@
   </div>
 </section>
 
+
+<!-- Daily overview -->
 <section class="my-5">
-  <div class="container">
+  <div class="container bg-light p-4 rounded shadow-sm">
+    <h2>Daily overview</h2>
     <div class="row">
-      {% for key, value in time_series.items %}
-      <div class="col-4">
-        <div class="h1">{{ key }}</div>
+      {% for key, value in daily_overview.items %}
+      <div class="col-md-4 col-12">
+        <div class="fw-bold mt-3">{{ key }}</div>
+        <hr class="mt-0 mb-2">
           {% for category, duration in value.items %}
           <div><span class="fw-bold">{{ category }}:</span> {{ duration }} minutes</div>
+          {% empty %}
+          <div class="text-muted">No bookings recorded</div>
           {% endfor %}
       </div>
         {% endfor %}
@@ -25,8 +31,50 @@
   </div>
 </section>
 
+<!-- Weekly overview -->
+<section class="my-5">
+  <div class="container bg-light p-4 rounded shadow-sm">
+    <h2>Weekly overview</h2>
+    <div class="row">
+      {% for key, value in weekly_overview.items %}
+      <div class="col-md-4 col-12">
+        <div class="fw-bold mt-3">Week of {{ key }}</div>
+        <hr class="mt-0 mb-2">
+          {% for category, duration in value.items %}
+          <div><span class="fw-bold">{{ category }}:</span> {{ duration }} minutes</div>
+          {% empty %}
+          <div class="text-muted">No bookings recorded</div>
+          {% endfor %}
+      </div>
+        {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Monthly overview -->
+<section class="my-5">
+  <div class="container bg-light p-4 rounded shadow-sm">
+    <h2>Monthly overview</h2>
+    <div class="row">
+      {% for key, value in monthly_overview.items %}
+      <div class="col-md-4 col-12">
+        <div class="fw-bold mt-3">{{ key }}</div>
+        <hr class="mt-0 mb-2">
+          {% for category, duration in value.items %}
+          <div><span class="fw-bold">{{ category }}:</span> {{ duration }} minutes</div>
+          {% empty %}
+          <div class="text-muted">No bookings recorded</div>
+          {% endfor %}
+      </div>
+        {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- All bookings -->
 <section>
   <div class="container bg-light p-4 rounded shadow-sm">
+    <h2>All bookings</h2>
     <div class="text-end text-success mb-3"><a href="{% url 'booking_new' %}"><i class="bi-plus-circle h3"></i></a></div>
     <div class="table-responsive">
       <table class="table">

@@ -47,3 +47,31 @@ def get_date_ranges_of_last_n_months(n):
         date = date - relativedelta(months=i)
         date_ranges.append(get_month_date_range(date))
     return date_ranges
+
+def get_date_ranges_of_last_n_weeks(n) -> list:
+    """
+    Get the date ranges of the last n weeks.
+    
+    return: A list of tuples with the start and end date of a week.
+    """
+    date_ranges = []
+    for i in range(n):
+        date = datetime.now().date()
+        start_date = date - relativedelta(weeks=i, weekday=0)
+        end_date = date - relativedelta(weeks=i, weekday=6)
+        date_ranges.append((start_date, end_date))
+    return date_ranges
+
+def get_date_ranges_of_last_n_days(n) -> list:
+    """
+    Get the date ranges of the last n days.
+    
+    return: A list of tuples with the start and end date of a day.
+    """
+    date_ranges = []
+    for i in range(n):
+        date = datetime.now().date()
+        start_date = date - relativedelta(days=i)
+        end_date = date - relativedelta(days=i)
+        date_ranges.append((start_date, end_date))
+    return date_ranges

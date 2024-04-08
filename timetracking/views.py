@@ -32,16 +32,36 @@ class BookingListView(LoginRequiredMixin, ListView):
         
         
         context["booking_list"] = Booking.objects.filter(user=self.request.user)
-        date_ranges = utils.get_date_ranges_of_last_n_months(3)
-        time_series = {}
+        
+        date_ranges = utils.get_date_ranges_of_last_n_days(3)
+        daily_overview = {}
         for date_range in date_ranges:
             start_date, end_date = date_range
             bookings = utils.get_bookings_in_date_range(start_date, end_date, self.request.user)
-            time_series[start_date.strftime("%b '%y")] = utils.get_duration_per_category(bookings)
-
-        context["time_series"] = time_series
+            daily_overview[start_date.strftime("%d.%m.%y")] = utils.get_duration_per_category(bookings)
+        context["daily_overview"] = daily_overview
         context["user"] = self.request.user
+    
+        date_ranges = utils.get_date_ranges_of_last_n_weeks(3)
+        weekly_overview = {}
+        for date_range in date_ranges:
+            start_date, end_date = date_range
+            bookings = utils.get_bookings_in_date_range(start_date, end_date, self.request.user)
+            weekly_overview[start_date.strftime("%d.%m.%y")] = utils.get_duration_per_category(bookings)
+        context["weekly_overview"] = weekly_overview
+        context["user"] = self.request.user
+    
+        date_ranges = utils.get_date_ranges_of_last_n_months(3)
+        monthly_overview = {}
+        for date_range in date_ranges:
+            start_date, end_date = date_range
+            bookings = utils.get_bookings_in_date_range(start_date, end_date, self.request.user)
+            monthly_overview[start_date.strftime("%b %Y")] = utils.get_duration_per_category(bookings)
+        context["monthly_overview"] = monthly_overview
         return context
+        
+        
+
         
 class BookingUpdateView(LoginRequiredMixin, UpdateView):
     model = Booking
