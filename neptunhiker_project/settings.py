@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # Local
     "accounts.apps.AccountsConfig",
     "apps",
+    "jobsearch",
     "timetracking",
     # 3rd party
     'allauth',
