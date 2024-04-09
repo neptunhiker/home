@@ -1,5 +1,9 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import ListView
 
-class HomePageView(TemplateView):
+from .models import Activity
+
+class HomePageView(ListView):
+    model = Activity
     template_name = 'jobsearch/home.html'
+    context_object_name = 'activities'
