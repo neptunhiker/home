@@ -1,14 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <div>Hello World</div>
-  {% for activity in activities %}
-    <div>{{ activity }}</div>
-  {% endfor %}
-</body>
-</html>
+{% extends "timetracking/base.html" %}
+
+{% load crispy_forms_tags %}
+{% block title %}Edit Booking{% endblock title %}
+
+{% block content %}
+<section>
+  <div class="container">
+    <h1 class="mb-5 text-center">Jobsearch App</h1>
+
+    <h2 class="mb-4">Latest activities</h2>
+    {% for activity in activities %}
+    <div class="card">
+      <div class="card-header text-muted">{{ activity.date|date:"d F Y" }}</div>
+      <div class="card-body">
+        <p class="fw-bold">{{ activity.headline }}</p>
+        <p>{{ activity.description }}</p>
+        <a class="btn btn-outline-success" href="{{ activity.get_absolute_url }}">Click for more</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock content %}
