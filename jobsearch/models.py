@@ -10,6 +10,7 @@ class Activity(models.Model):
     description = models.TextField()
     next_steps = models.TextField(blank=True, null=True)
     reminder_date = models.DateField(blank=True, null=True)
+    reminder_completed = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
