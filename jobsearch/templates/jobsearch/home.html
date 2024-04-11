@@ -5,23 +5,42 @@
 
 {% block content %}
 <section>
-  <div class="container">
-    <h1 class="mb-5 bg-primary p-5 text-light text-center rounded shadow">Jobsearch App</h1>
+  <div class="container bg-dark text-light shadow">
+    <div class="row p-4">
+      <div class="col-6 align-items-center d-flex justify-content-center rounded">
+        <div class="display-3 p-5 text-center fw-bold text-decoration-underline">Jobsearch App</div>
+      </div>
+      <div class="col-6 row gap-3 justify-content-center align-items-center">
+        <div class="row justify-content-center gap-5">
+          <a href="#" class="col-3 p-3 btn btn-outline-light fw-bold bg-outline-dark">Activities</a>
+          <a href="#" class="col-3 p-3 btn btn-outline-light fw-bold bg-outline-dark">Contacts</a>
+          <a href="#" class="col-3 p-3 btn btn-outline-light fw-bold bg-outline-dark">Companies</a>
+        </div>
+        <div class="row justify-content-center gap-5">
+          <a href="#" class="col-3 p-3 btn btn-outline-light fw-bold bg-outline-dark">Job postings</a>
+          <a href="#" class="col-3 p-3 btn btn-outline-light fw-bold bg-outline-dark">Applications</a>
+          <a href="#" class="col-3 p-3 btn btn-outline-light fw-bold bg-outline-dark">Interviews</a>
+        </div>
+        <div class="row justify-content-center gap-5">
+          <a href="#" class="col-3 p-3 btn btn-outline-light fw-bold bg-outline-dark">Offers</a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="my-5">
   <div class="container shadow p-4">
     <div class="row">
-      <div class="col text-center flex-column align-items-center d-none d-md-flex">
-        <h1 class="mb-4 display-3"><i class="bi-alarm display-1 text-danger me-4"></i>Reminders</h1>
+      <div class="col flex-column align-items-center justify-content-center d-none d-md-flex">
+        <h1 class="mb-4"><i class="bi-alarm text-danger me-4"></i>Reminders</h1>
       </div>
       <div class="col">
-        {% for activity in activities %}
+        {% for activity in activities|slice:":5" %}
           {% if activity.reminder_date and not activity.reminder_completed %}
             <div class="card my-3 shadow">
-              <div class="card-header position-relative">
-                <div class="text-muted">
+              <div class="card-header bg-danger-subtle text-dark">
+                <div class="">
                   {{ activity.reminder_date|date:"d F Y" }}
                 </div>
               </div>
@@ -29,7 +48,7 @@
                 <p class="fw-bold">{{ activity.headline  }}</p>
                 <p><span class="text-decoration-underline">Next steps:</span> {{ activity.next_steps }}</p>
                 <div class="text-end">
-                  <a class="btn btn-outline-primary btn-sm text-end" href="{{ activity.get_absolute_url }}">Click for more</a>
+                  <a class="btn btn-outline-danger btn-sm text-end" href="{{ activity.get_absolute_url }}">Click for more</a>
                 </div>
               </div>
             </div>
@@ -43,25 +62,25 @@
 
 <section>
   <div class="container shadow my-5 p-4">
-    <div class="text-end"><a href="{% url 'activity_new' %}"><i class="bi-plus-circle text-primary h1"></i></a></div>
+    <div class="text-end"><a href="{% url 'activity_new' %}"><i class="bi-plus-circle text-warning h1"></i></a></div>
     <div class="row">
-      <div class="col text-center flex-column align-items-center d-none d-md-flex">
-        <h1 class="mb-4 display-3"><i class="bi-activity display-1 text-primary me-4"></i>Latest activities</h1>
-        <div class="mt-5 mb-3"><i class="bi-record-circle-fill text-primary"></i></div>
-        <div class="my-3"><i class="bi-record-circle-fill text-primary"></i></div>
-        <div class="my-3"><i class="bi-record-circle-fill text-primary"></i></div>
+      <div class="col text-center flex-column align-items-center justify-content-center d-none d-md-flex">
+        <h1 class="mb-4"><i class="bi-activity text-warning me-4"></i>Latest activities</h1>
+        <div class="mt-5 mb-3"><i class="bi-record-circle-fill text-warning"></i></div>
+        <div class="my-3"><i class="bi-record-circle-fill text-warning"></i></div>
+        <div class="my-3"><i class="bi-record-circle-fill text-warning"></i></div>
       </div>
       <div class="col">
 
         <div class="d-md-none h1"><i class="bi-activity text-primary"></i> Latest activities</div>
         {% for activity in activities %}
         <div class="card my-3 shadow">
-          <div class="card-header text-muted">{{ activity.date|date:"d F Y" }}</div>
+          <div class="card-header text-muted bg-warning-subtle">{{ activity.date|date:"d F Y" }}</div>
           <div class="card-body">
             <p class="fw-bold">{{ activity.headline }}</p>
             <p>{{ activity.description }}</p>
             <div class="text-end">
-              <a class="btn btn-outline-primary btn-sm text-end" href="{{ activity.get_absolute_url }}">Click for more</a>
+              <a class="btn btn-outline-warning btn-sm text-end" href="{{ activity.get_absolute_url }}">Click for more</a>
             </div>
           </div>
         </div>
