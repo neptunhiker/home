@@ -1,0 +1,17 @@
+{% extends "jobsearch/base.html" %}
+
+{% load crispy_forms_tags %}
+{% block title %}Update Activity{% endblock title %}
+
+{% block content %}
+<section>
+  <div class="container my-4">   
+    <h1 class="mb-4">Update Activity</h1> 
+      <form action="" method="post">{% csrf_token %}
+        {{ form|crispy}}
+        <input type="submit" value="Change" class="btn btn-success">
+        <a href="{% url 'activity_detail' activity.pk %}" class="btn btn-outline-danger">Cancel</a>
+      </form>
+  </div>
+</section>
+{% endblock content %}

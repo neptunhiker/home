@@ -1,4 +1,4 @@
-{% extends "timetracking/base.html" %}
+{% extends "jobsearch/base.html" %}
 
 {% load crispy_forms_tags %}
 {% block title %}Edit Booking{% endblock title %}
@@ -8,7 +8,6 @@
   <div class="container bg-light p-4 border shadow rounded">
     <h1 class="mb-4">{{ activity }}</h1>
     <div class="bg-white rounded p-4">
-
       <h4 class="fw-bold"><i class="bi-calendar2-week me-3"></i> Date</h4>
       <p class="mb-5">{{ activity.date|date:"d F Y" }}</p>
       <h4 class="fw-bold"><i class="bi-body-text me-3"></i> Description</h4>
@@ -17,6 +16,10 @@
       <p class="mb-5">{{ activity.next_steps }}</p>
       <h4 class="fw-bold"><i class="bi-alarm me-3"></i> Reminder date</h4>
       <p class="mb-5">{{ activity.reminder_date|date:"d F Y" }}</p>
+    </div>
+    <div class="mt-4 text-end">
+      <a href="{% url 'activity_edit' activity.pk %}" class="btn btn-sm btn-outline-warning">Edit</a>
+      <a href="#" class="btn btn-sm btn-outline-danger">Delete</a>
     </div>
   </div>
 </section>
