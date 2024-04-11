@@ -17,7 +17,7 @@ class ActivityDetailView(DetailView):
     
 class ActivityUpdateView(UpdateView):
     model = Activity
-    fields = ['headline', 'date', 'description', 'next_steps', 'reminder_date']
+    fields = ['headline', 'date', 'description', 'next_steps', 'reminder_date', 'reminder_completed']
     template_name = 'jobsearch/activity_update.html'
     
     def get_success_url(self) -> str:
