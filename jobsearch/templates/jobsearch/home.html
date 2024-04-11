@@ -8,6 +8,7 @@
   <div class="container">
     <h1 class="mb-5 text-center">Jobsearch App</h1>
 
+    <div class="text-end"><a href="{% url 'activity_new' %}"><i class="bi-plus-circle text-success h1"></i></a></div>
     <h2 class="mb-4">Latest activities</h2>
     {% for activity in activities %}
     <div class="card">

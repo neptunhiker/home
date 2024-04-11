@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse
-from django.views.generic import ListView, DetailView, UpdateView
+from django.views.generic import ListView, DetailView, UpdateView, CreateView
 
 
 from .models import Activity
@@ -22,3 +22,11 @@ class ActivityUpdateView(UpdateView):
     
     def get_success_url(self) -> str:
         return reverse("activity_detail", kwargs={"pk": self.object.pk})
+      
+class ActivityCreateView(CreateView):
+    model = Activity
+    fields = ['headline', 'date', 'description', 'next_steps', 'reminder_date']
+    template_name = 'jobsearch/activity_new.html'
+    
+    def get_success_url(self) -> str:
+        return reverse("jobsearch_home")

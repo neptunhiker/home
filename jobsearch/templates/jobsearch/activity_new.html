@@ -1,0 +1,30 @@
+{% extends "jobsearch/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+  
+  <section>
+
+    <div class="container my-4">
+      <div class="row">
+        <div class="col-12 col-md-6 d-flex flex-column text-md-center justify-content-center bg-light rounded">
+          <div class="display-1 text-success d-none d-md-block">
+            <i class="bi-activity"></i>
+          </div>
+          <div class="h3 fw-bold mt-md-5 p-3 p-md-0 text-dark">Create a new jobsearch activity</div>
+        </div>
+        <div class="col-12 col-md-6">
+          <form action="" method="post">{% csrf_token %}
+            {{ form|crispy }}
+            <button class="btn btn-success ml-2" type="submit">Save</button>
+            <a class="btn btn-outline-danger" href="{% url 'jobsearch_home' %}">Cancel</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+
+{% endblock content %}
