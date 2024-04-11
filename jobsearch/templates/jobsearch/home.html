@@ -11,7 +11,7 @@
 </section>
 
 <section class="my-5">
-  <div class="container">
+  <div class="container shadow p-4">
     <div class="row">
       <div class="col text-center flex-column align-items-center d-none d-md-flex">
         <h1 class="mb-4 display-3"><i class="bi-alarm display-1 text-danger me-4"></i>Reminders</h1>
@@ -24,14 +24,13 @@
                 <div class="text-muted">
                   {{ activity.reminder_date|date:"d F Y" }}
                 </div>
-                <div class="position-absolute top-0 end-0 me-3">
-                  <a href="{% url 'activity_edit' activity.pk %}">
-                    <i class="bi-pen text-warning"></i></div>
-                  </a>
               </div>
               <div class="card-body">
                 <p class="fw-bold">{{ activity.headline  }}</p>
                 <p><span class="text-decoration-underline">Next steps:</span> {{ activity.next_steps }}</p>
+                <div class="text-end">
+                  <a class="btn btn-outline-primary btn-sm text-end" href="{{ activity.get_absolute_url }}">Click for more</a>
+                </div>
               </div>
             </div>
           {% endif %}
@@ -43,7 +42,7 @@
 
 
 <section>
-  <div class="container bg-light py-4">
+  <div class="container shadow my-5 p-4">
     <div class="text-end"><a href="{% url 'activity_new' %}"><i class="bi-plus-circle text-primary h1"></i></a></div>
     <div class="row">
       <div class="col text-center flex-column align-items-center d-none d-md-flex">

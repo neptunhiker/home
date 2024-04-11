@@ -16,10 +16,15 @@
       <p class="mb-5">{{ activity.next_steps }}</p>
       <h4 class="fw-bold"><i class="bi-alarm me-3"></i> Reminder date</h4>
       <p class="mb-5">{{ activity.reminder_date|date:"d F Y" }}</p>
+      <h4 class="fw-bold"><i class="bi-alarm me-3"></i> Reminder completed?</h4>
+      <p class="mb-2">{{ activity.reminder_completed }}</p>
     </div>
-    <div class="mt-4 text-end">
-      <a href="{% url 'activity_edit' activity.pk %}" class="btn btn-sm btn-outline-warning">Edit</a>
-      <a href="#" class="btn btn-sm btn-outline-danger">Delete</a>
+    <div class="mt-4 d-flex justify-content-between">
+      <a href="{% url 'jobsearch_home' %}" class="btn btn-outline-success btn-sm"><- Back</a>
+      <div>
+        <a href="{% url 'activity_edit' activity.pk %}" class="btn btn-sm btn-outline-warning">Edit</a>
+        <a href="{% url 'activity_delete' activity.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+      </div>
     </div>
   </div>
 </section>

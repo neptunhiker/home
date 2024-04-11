@@ -18,7 +18,7 @@ class Activity(models.Model):
         return reverse('activity_detail', args=[str(self.id)])
       
     class Meta:
-        ordering = ['-created']
+        ordering = ['-date']
         verbose_name_plural = 'Activities'
         
     def __str__(self):

@@ -1,0 +1,30 @@
+{% extends "jobsearch/base.html" %}
+{% block title %}Delete Activity{% endblock title %}
+
+{% block content %}
+<section>
+  <div class="container mt-5">
+    <h4 class="fw-bold mb-5">Do you really want to delete the following activity?</h4>
+    <div class="bg-light p-4">
+
+      <div class="h1">{{ activity }}</div>
+      <div class="bg-white rounded p-4">
+        <h4 class="fw-bold"><i class="bi-calendar2-week me-3"></i> Date</h4>
+        <p class="mb-5">{{ activity.date|date:"d F Y" }}</p>
+        <h4 class="fw-bold"><i class="bi-body-text me-3"></i> Description</h4>
+        <p class="mb-5">{{ activity.description }}</p>
+        <h4 class="fw-bold"><i class="bi-bar-chart-steps me-3"></i> Next steps</h4>
+        <p class="mb-5">{{ activity.next_steps }}</p>
+        <h4 class="fw-bold"><i class="bi-alarm me-3"></i> Reminder date</h4>
+        <p class="mb-5">{{ activity.reminder_date|date:"d F Y" }}</p>
+        <h4 class="fw-bold"><i class="bi-alarm me-3"></i> Reminder completed?</h4>
+        <p class="mb-2">{{ activity.reminder_completed }}</p>
+      </div>
+    </div>
+      <form action="" method="post" class="my-5">{% csrf_token %}
+      <button class="btn btn-danger ml-2" type="submit">Yes, delete it</button>
+      <a class="btn btn-outline-success" href="{% url 'activity_detail' activity.pk %}">No</a>
+    </form>
+  </div>
+</section>
+{% endblock content %}
