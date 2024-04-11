@@ -7,27 +7,22 @@
 <section>
   <div class="container bg-dark text-light shadow">
     <div class="row p-4">
-      <div class="col-6 align-items-center d-flex justify-content-center rounded">
+      <div class="col-12 col-lg-4 col-xl-6 align-items-center d-flex justify-content-center rounded">
         <div class="display-3 p-5 text-center fw-bold text-decoration-underline">Jobsearch App</div>
       </div>
-      <div class="col-6 row gap-3 justify-content-center align-items-center">
-        <div class="row justify-content-center gap-5">
-          <a href="#" class="col-3 p-3 btn btn-outline-light fw-bold bg-outline-dark">Activities</a>
-          <a href="#" class="col-3 p-3 btn btn-outline-light fw-bold bg-outline-dark">Contacts</a>
-          <a href="#" class="col-3 p-3 btn btn-outline-light fw-bold bg-outline-dark">Companies</a>
-        </div>
-        <div class="row justify-content-center gap-5">
-          <a href="#" class="col-3 p-3 btn btn-outline-light fw-bold bg-outline-dark">Job postings</a>
-          <a href="#" class="col-3 p-3 btn btn-outline-light fw-bold bg-outline-dark">Applications</a>
-          <a href="#" class="col-3 p-3 btn btn-outline-light fw-bold bg-outline-dark">Interviews</a>
-        </div>
-        <div class="row justify-content-center gap-5">
-          <a href="#" class="col-3 p-3 btn btn-outline-light fw-bold bg-outline-dark">Offers</a>
-        </div>
+      <div class="col-12 col-lg-8 col-xl-6 d-flex flex-wrap gap-4 justify-content-center align-items-center">
+        <a href="#" class="btn btn-outline-light fw-bold bg-outline-dark p-3">Activities</a>
+        <a href="#" class="btn btn-outline-light fw-bold bg-outline-dark p-3">Contacts</a>
+        <a href="#" class="btn btn-outline-light fw-bold bg-outline-dark p-3">Companies</a>
+        <a href="#" class="btn btn-outline-light fw-bold bg-outline-dark p-3">Job postings</a>
+        <a href="#" class="btn btn-outline-light fw-bold bg-outline-dark p-3">Applications</a>
+        <a href="#" class="btn btn-outline-light fw-bold bg-outline-dark p-3">Interviews</a>
+        <a href="#" class="btn btn-outline-light fw-bold bg-outline-dark p-3">Offers</a>
       </div>
     </div>
   </div>
 </section>
+
 
 <section class="my-5">
   <div class="container shadow p-4">
@@ -36,6 +31,7 @@
         <h1 class="mb-4"><i class="bi-alarm text-danger me-4"></i>Reminders</h1>
       </div>
       <div class="col">
+        <div class="d-md-none h1 mb-4"><i class="bi-alarm text-danger"></i> Reminders</div>
         {% for activity in activities|slice:":5" %}
           {% if activity.reminder_date and not activity.reminder_completed %}
             <div class="card my-3 shadow">
@@ -71,8 +67,7 @@
         <div class="my-3"><i class="bi-record-circle-fill text-warning"></i></div>
       </div>
       <div class="col">
-
-        <div class="d-md-none h1"><i class="bi-activity text-primary"></i> Latest activities</div>
+        <div class="d-md-none h1 mb-4"><i class="bi-activity text-warning"></i> Latest activities</div>
         {% for activity in activities %}
         <div class="card my-3 shadow">
           <div class="card-header text-muted bg-warning-subtle">{{ activity.date|date:"d F Y" }}</div>
