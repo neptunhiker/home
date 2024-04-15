@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import HomePageView, ActivityDetailView, ActivityUpdateView, ActivityCreateView, ActivityDeleteView
+from .views import HomePageView, ActivityDetailView, ActivityUpdateView, ActivityCreateView, ActivityDeleteView, CompanyListView
 
 
 urlpatterns = [
@@ -8,4 +8,5 @@ urlpatterns = [
     path('activity/edit/<uuid:pk>', ActivityUpdateView.as_view(), name='activity_edit'),
     path('activity/new', ActivityCreateView.as_view(), name='activity_new'),
     path('activity/delete/<uuid:pk>', ActivityDeleteView.as_view(), name='activity_delete'),
+    path('company/list', CompanyListView.as_view(), name='company_list'),
 ]

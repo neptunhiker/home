@@ -1,0 +1,50 @@
+{% extends "timetracking/base.html" %}
+
+{% load crispy_forms_tags %}
+{% block title %}Edit Booking{% endblock title %}
+
+{% block content %}
+
+<section>
+  <div class="container">
+    {% for company in companies %}
+      <div class="bg-light p-3 my-5 shadow">
+        <div class="h1 mb-4">{{ company }}</div>
+        {% for jobposting in company.jobposting_set.all %} 
+        <div class="ms-3 bg-white p-3 rounded shadow my-3">
+
+          <div class="h4 fw-bold">Job posting: {{ jobposting }}</div>
+          <div class="ms-4">
+
+            <div class="h6 fw-bold mt-4">Applications</div>
+            {% for application in jobposting.application_set.all %}
+              <div>{{ application }}</div>
+              <div class="ms-4">
+
+                <div class="h6 fw-bold mt-4">Resulting interviews</div>
+                {% for interview in application.interview_set.all %}
+                  <div>{{ interview }}</div>
+                {% empty %}
+                  <div>No interviews scheduled yet</div>
+                {% endfor %}
+                <div class="h6 fw-bold mt-4">Resulting offers</div>
+                {% for offer in application.offer_set.all %}
+                  <div>{{ offer }}</div>
+                {% empty %}
+                  <div>No offers made yet</div>
+                {% endfor %}
+              </div>
+
+            {% empty %}
+              <div>No applications sent yet</div>
+            {% endfor %}
+          </div>
+          </div>  
+          {% empty %}
+          <div>No job postings so far</div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock content %}

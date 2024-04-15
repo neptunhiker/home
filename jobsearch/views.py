@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import ListView, DetailView, UpdateView, CreateView, DeleteView
 
-from .models import Activity
+from .models import Activity, Company, JobPosting, Application, Interview, Offer
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 class HomePageView(LoginRequiredMixin, ListView):
@@ -37,3 +37,9 @@ class ActivityDeleteView(LoginRequiredMixin, DeleteView):
     
     def get_success_url(self) -> str:
         return reverse("jobsearch_home")
+      
+class CompanyListView(LoginRequiredMixin, ListView):
+    model = Company
+    template_name = 'jobsearch/company_list.html'
+    context_object_name = 'companies'
+    

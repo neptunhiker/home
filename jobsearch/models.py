@@ -30,6 +30,7 @@ class Company(models.Model):
     name = models.CharField(max_length=50)
     website = models.URLField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
+    headhunter = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['name']
@@ -83,7 +84,7 @@ class Application(models.Model):
         verbose_name_plural = 'Applications'
         
     def __str__(self):
-        return f'{self.job_posting} - {self.date} - {self.status}'
+        return f'Application for {self.job_posting} on {self.date.strftime("%d %b %Y")} - status: {self.status}'
       
 class Interview(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -104,7 +105,7 @@ class Interview(models.Model):
         verbose_name_plural = 'Interviews'
         
     def __str__(self):
-        return f'{self.application} - {self.date} - {self.time}'
+        return f'Inteview on {self.date.strftime("%d %b %Y")}'
       
 class Offer(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -127,4 +128,4 @@ class Offer(models.Model):
         verbose_name_plural = 'Offers'
         
     def __str__(self):
-        return f'{self.position} - {self.date} - {self.salary}'
+        return f'Offer as {self.position} received on {self.date.strftime("%d %b %Y")} - status: {self.status}'
