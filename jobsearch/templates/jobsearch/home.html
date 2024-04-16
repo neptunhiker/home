@@ -32,7 +32,7 @@
       </div>
       <div class="col">
         <div class="d-md-none h1 mb-4"><i class="bi-alarm text-danger"></i> Reminders</div>
-        {% for activity in activities|slice:":5" %}
+        {% for activity in activities %}
           {% if activity.reminder_date and not activity.reminder_completed %}
             <div class="card my-3 shadow">
               <div class="card-header bg-danger-subtle text-dark">
